@@ -22,23 +22,24 @@ This helps prevent semantic errors before code generation.
 ## Design / Approach
 
 ### 1. Symbol Table Structure
-- Each entry stores:
-  - Macro name
-  - Replacement code (macro body)
-  - Scope level
-- Recommended data structure: **Hash table** or **dictionary**
+Each entry stores:
+- Macro name
+- Replacement code (macro body)
+- Scope level  
+
+Recommended data structure: **Hash table** or **dictionary**
 
 ### 2. Insertion
-- When a new macro is defined:
-  - Check if the macro name exists in the **current scope**
-  - If yes → report a **redefinition error**
-  - If no → insert the macro into the symbol table
+When a new macro is defined:
+- Check if the macro name exists in the **current scope**
+- If yes → report a **redefinition error**
+- If no → insert the macro into the symbol table
 
 ### 3. Lookup
-- During macro expansion:
-  - Look up the macro name in the symbol table
-  - Prefer the **nearest enclosing scope**
-  - Retrieve the macro body for expansion
+During macro expansion:
+- Look up the macro name in the symbol table
+- Prefer the **nearest enclosing scope**
+- Retrieve the macro body for expansion
 
 ### 4. Scope Management
 - Push a new scope when entering a file or block
@@ -75,9 +76,7 @@ def enter_scope():
 # Exit the current scope
 def exit_scope():
     symbol_table.pop_scope()
-
-##Notes
-
+Notes
 Inner-scope macros may shadow outer-scope macros.
 
 Macro names should not collide with variables or function identifiers.
@@ -86,8 +85,7 @@ This design can be extended to support parameterized macros.
 
 Proper scope handling prevents macro leakage across blocks.
 
-##References
-
+References
 Aho, Lam, Sethi, Ullman – Compilers: Principles, Techniques, Tools
 
 Appel – Modern Compiler Implementation
