@@ -76,7 +76,9 @@ def enter_scope():
 # Exit the current scope
 def exit_scope():
     symbol_table.pop_scope()
-Notes
+
+
+##Notes
 Inner-scope macros may shadow outer-scope macros.
 
 Macro names should not collide with variables or function identifiers.
@@ -85,7 +87,7 @@ This design can be extended to support parameterized macros.
 
 Proper scope handling prevents macro leakage across blocks.
 
-References
+##References
 Aho, Lam, Sethi, Ullman – Compilers: Principles, Techniques, Tools
 
 Appel – Modern Compiler Implementation
